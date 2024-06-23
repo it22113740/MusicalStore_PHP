@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Matching Example</title>
+</head>
+<body>
+    <form id="passwordForm">
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <br>
+        <label for="confirmPassword">Re-enter Password:</label>
+        <input type="password" id="confirmPassword" required>
+        <br>
+        <button type="submit" id="submitButton" disabled>Submit</button>
+    </form>
+
+    <script>
+        // Get references to the password and confirm password fields
+        const passwordField = document.getElementById("password");
+        const confirmPasswordField = document.getElementById("confirmPassword");
+
+        // Get reference to the submit button
+        const submitButton = document.getElementById("submitButton");
+
+        // Add an event listener to both password fields
+        passwordField.addEventListener("input", validatePassword);
+        confirmPasswordField.addEventListener("input", validatePassword);
+
+        // Function to validate if the passwords match
+        function validatePassword() {
+            const password = passwordField.value;
+            const confirmPassword = confirmPasswordField.value;
+
+            if (password === confirmPassword) {
+                submitButton.disabled = false;
+            } else {
+                submitButton.disabled = true;
+            }
+        }
+    </script>
+</body>
+</html>
